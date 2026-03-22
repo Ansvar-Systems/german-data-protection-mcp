@@ -1,0 +1,36 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "eu.ansvar/german-data-protection-mcp",
+  "description": "Query BfDI decisions, sanctions, and guidance on data protection and GDPR enforcement in Germany",
+  "repository": {
+    "url": "https://github.com/Ansvar-Systems/german-data-protection-mcp",
+    "source": "github"
+  },
+  "homepage": "https://ansvar.eu",
+  "version": "0.1.0",
+  "license": "Apache-2.0",
+  "keywords": [
+    "bfdi",
+    "german-data-protection",
+    "datenschutz",
+    "dsgvo",
+    "gdpr",
+    "germany",
+    "data-protection",
+    "privacy",
+    "sanctions",
+    "compliance",
+    "mcp",
+    "ansvar"
+  ],
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "@ansvar/german-data-protection-mcp",
+      "version": "0.1.0",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
+}
