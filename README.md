@@ -4,7 +4,6 @@
 
 [![npm version](https://badge.fury.io/js/%40ansvar%2Fgerman-data-protection-mcp.svg)](https://www.npmjs.com/package/@ansvar/german-data-protection-mcp)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![CI](https://github.com/Ansvar-Systems/german-data-protection-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/Ansvar-Systems/german-data-protection-mcp/actions/workflows/ci.yml)
 
 Query German data protection data -- regulations, decisions, and requirements from BfDI (Bundesbeauftragter fur den Datenschutz und die Informationsfreiheit) -- directly from Claude, Cursor, or any MCP-compatible client.
 
@@ -90,18 +89,20 @@ npx @ansvar/german-data-protection-mcp
 
 ---
 
-## Available Tools (6)
+## Available Tools (8)
 
 | Tool | Description |
 |------|-------------|
-| `de_dp_search_decisions` | Full-text search across BfDI decisions (Bußgeldbescheide, Verfahren, Anordnungen). Returns matching decisions with re... |
-| `de_dp_get_decision` | Get a specific BfDI decision by reference number (e.g., |
-| `de_dp_search_guidelines` | Search BfDI and DSK guidance documents: Orientierungshilfen, Kurzpapiere, Hinweise, and Empfehlungen. Covers DSGVO im... |
+| `de_dp_search_decisions` | Full-text search across BfDI decisions (Bußgeldbescheide, Verfahren, Anordnungen). |
+| `de_dp_get_decision` | Get a specific BfDI decision by reference number. |
+| `de_dp_search_guidelines` | Search BfDI and DSK guidance documents: Orientierungshilfen, Kurzpapiere, Hinweise, and Empfehlungen. |
 | `de_dp_get_guideline` | Get a specific BfDI guidance document by its database ID. |
-| `de_dp_list_topics` | List all covered data protection topics with German and English names. Use topic IDs to filter decisions and guidelines. |
+| `de_dp_list_topics` | List all covered data protection topics with German and English names. |
 | `de_dp_about` | Return metadata about this MCP server: version, data source, coverage, and tool list. |
+| `de_dp_list_sources` | List all data sources with publisher, URL, coverage scope, and license. |
+| `de_dp_check_data_freshness` | Check when the corpus was last ingested and whether data may be stale. |
 
-All tools return structured data with source references and timestamps.
+All tools return structured data with `_citation`, `_meta`, and source references. See [TOOLS.md](TOOLS.md) for full parameter documentation.
 
 ---
 
@@ -114,10 +115,10 @@ All content is sourced from official German regulatory publications:
 ### Data Currency
 
 - Database updates are periodic and may lag official publications
-- Freshness checks run via GitHub Actions workflows
-- Last-updated timestamps in tool responses indicate data age
+- Freshness checks run via GitHub Actions (`check-freshness.yml` workflow, weekly)
+- Use the `de_dp_check_data_freshness` tool to see corpus age and record counts
 
-See `sources.yml` for full provenance metadata.
+See [COVERAGE.md](COVERAGE.md) for full provenance and corpus details.
 
 ---
 
@@ -180,8 +181,8 @@ npx @anthropic/mcp-inspector node dist/index.js   # Test with MCP Inspector
 ### Data Management
 
 ```bash
-npm run build:db       # Rebuild SQLite database from seed data
-npm run check-updates  # Check for new regulatory data
+npm run seed           # Seed SQLite database with sample data
+npm run ingest         # Ingest latest BfDI/DSK publications
 ```
 
 ---
@@ -218,7 +219,7 @@ Apache License 2.0. See [LICENSE](./LICENSE) for details.
 
 ### Data Licenses
 
-Regulatory data sourced from official government publications. See `sources.yml` for per-source licensing details.
+Regulatory data sourced from official government publications. See [COVERAGE.md](COVERAGE.md) for per-source licensing details.
 
 ---
 
