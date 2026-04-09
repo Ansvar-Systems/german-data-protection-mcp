@@ -261,3 +261,43 @@ export function listTopics(): Topic[] {
     .prepare("SELECT * FROM topics ORDER BY id")
     .all() as Topic[];
 }
+
+// --- Meta queries -------------------------------------------------------------
+
+/**
+ * Return the most recent data date across decisions and guidelines,
+ * falling back to the known last-ingested date if the DB is empty.
+ */
+export function getDataAge(): string {
+  const db = getDb();
+  const row = db
+    .prepare(
+      `SELECT MAX(max_date) as max_date FROM (
+         SELECT MAX(date) as max_date FROM decisions
+         UNION ALL
+         SELECT MAX(date) as max_date FROM guidelines
+       )`,
+    )
+    .get() as { max_date: string | null } | undefined;
+  return row?.max_date ?? "2026-03-23";
+}
+
+export interface RecordCounts {
+  decisions: number;
+  guidelines: number;
+  topics: number;
+}
+
+export function getRecordCounts(): RecordCounts {
+  const db = getDb();
+  const decisions = (
+    db.prepare("SELECT COUNT(*) as n FROM decisions").get() as { n: number }
+  ).n;
+  const guidelines = (
+    db.prepare("SELECT COUNT(*) as n FROM guidelines").get() as { n: number }
+  ).n;
+  const topics = (
+    db.prepare("SELECT COUNT(*) as n FROM topics").get() as { n: number }
+  ).n;
+  return { decisions, guidelines, topics };
+}
