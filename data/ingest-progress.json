@@ -1,9 +1,6 @@
 {
   "phase": "complete",
   "completedUrls": [
-    "https://www.bfdi.bund.de/SharedDocs/Pressemitteilungen/DE/2025/06_Geldbu%C3%9Fe-Vodafone.html?nn=251944",
-    "https://www.bfdi.bund.de/SharedDocs/Pressemitteilungen/DE/2023/gemeinsame-PM-Bu%C3%9Fgeld-Leitlinien.html?nn=251944",
-    "https://www.bfdi.bund.de/SharedDocs/Pressemitteilungen/DE/2019/30_BfDIverh%C3%A4ngtGeldbu%C3%9Fe1u1.html?nn=251944",
     "https://www.bfdi.bund.de/SharedDocs/Downloads/DE/DSK/Orientierungshilfen/OH_Digitale-Dienste.html?nn=253022",
     "https://www.bfdi.bund.de/SharedDocs/Downloads/DE/DSK/Orientierungshilfen/OH-Onlinezugangsgesetz.html?nn=253022",
     "https://www.bfdi.bund.de/SharedDocs/Downloads/DE/DSK/Orientierungshilfen/OrientierungshilfeAnbieter-innenTelemedien.html?nn=253022",
@@ -131,8 +128,8 @@
     "https://www.datenschutzkonferenz-online.de/../media/dskb/20180323_dskb_mahnung_computeranruf.pdf",
     "https://www.datenschutzkonferenz-online.de/../media/dskb/20180323_dskb_mail_adressen.pdf"
   ],
-  "decisionsIngested": 3,
+  "decisionsIngested": 0,
   "guidelinesIngested": 125,
   "topicsIngested": 20,
-  "lastUpdated": "2026-04-26T03:13:13.773Z"
+  "lastUpdated": "2026-05-03T03:13:48.922Z"
 }
